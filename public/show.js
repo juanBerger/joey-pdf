@@ -9,7 +9,7 @@ xhr.open("GET", "/img", true);
 //xhr.open("GET", base + '/public/img', true);
 xhr.setRequestHeader('Access-Control-Allow-Headers', '*');
 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencode');
-xhr.responseType = 'document';
+xhr.responseType = 'json';
 xhr.onload = () => {
   if (xhr.status === 200) {
     var elements = xhr.response.getElementsByTagName("a");
