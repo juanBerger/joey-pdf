@@ -1,10 +1,12 @@
-let base = 'http://127.0.0.1:5500'
+//let base = 'http://127.0.0.1:5500'
+let base = 'https://dreamy-snyder-e3e268.netlify.app/'
 let parent = document.getElementById("container");
 var xhr = new XMLHttpRequest();
 let images = {}
 
 
-xhr.open("GET", "./img", true);
+//xhr.open("GET", "./img", true);
+xhr.open("GET", base + '/public/img', true);
 xhr.setRequestHeader('Access-Control-Allow-Headers', '*');
 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencode');
 xhr.responseType = 'document';
