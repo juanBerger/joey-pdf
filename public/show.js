@@ -13,7 +13,11 @@ xhr.responseType = 'document';
 xhr.onload = () => {
   if (xhr.status === 200) {
     var elements = xhr.response.getElementsByTagName("a");
-    console.log(elements)
+    console.log(xhr.response)
+    console.log(xhr.responseType)
+    console.log(xhr.status)
+    console.log(xhr.responseXML)
+    console.log(xhr.responseURL)
     for (x of elements) {
       if (x.href.match(/\.(jpe?g|png|gif)$/) ) { 
         let img = document.createElement("img");
