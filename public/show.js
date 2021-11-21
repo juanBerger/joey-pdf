@@ -1,12 +1,12 @@
 //let base = 'http://127.0.0.1:5500'
-let base = 'https://pdf-on-utopia.netlify.app/'
+let base = 'https://pdf-on-utopia.netlify.app'
 let parent = document.getElementById("container");
 var xhr = new XMLHttpRequest();
 let images = {}
 
 
-//xhr.open("GET", "./img", true);
-xhr.open("GET", base + 'public/img', true);
+xhr.open("GET", "./img", true);
+//xhr.open("GET", base + '/public/img', true);
 xhr.setRequestHeader('Access-Control-Allow-Headers', '*');
 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencode');
 xhr.responseType = 'document';
@@ -14,8 +14,6 @@ xhr.onload = () => {
   if (xhr.status === 200) {
     var elements = xhr.response.getElementsByTagName("a");
     console.log(xhr.response)
-    console.log(xhr.responseType)
-    console.log(xhr.status)
     console.log(xhr.responseXML)
     console.log(xhr.responseURL)
     for (x of elements) {
