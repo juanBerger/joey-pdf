@@ -6,7 +6,7 @@ let images = {}
 
 
 //xhr.open("GET", "./img", true);
-xhr.open("GET", base + '/public/img', true);
+xhr.open("GET", base + 'public/img', true);
 xhr.setRequestHeader('Access-Control-Allow-Headers', '*');
 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencode');
 xhr.responseType = 'document';
