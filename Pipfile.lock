@@ -1,0 +1,29 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "60ce7fe1fe36263c160cbcaeac5155cf4eaa4c0acf14855acde846140595a37d"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.9"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "airium": {
+            "hashes": [
+                "sha256:34d0e82e4e939e8e0c3e88c8b6723f9d5e2555255d533f30732bad2e350f9c00",
+                "sha256:cc40e82633880537f4bf355958aeb5a48ebf5725bac9364bf25e6b0aec2b9771"
+            ],
+            "index": "pypi",
+            "version": "==0.2.3"
+        }
+    },
+    "develop": {}
+}
