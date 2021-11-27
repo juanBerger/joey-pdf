@@ -9,8 +9,8 @@ for root, dirs, files in os.walk('./public/img'):
 
 a = Airium()
 
-a('<!DOCTYPE html>')
-with a.html(lang="pl"):
+a('<!doctype html>')
+with a.html(lang="en"):
     with a.head():
         a.meta(charset="utf-8")
         a.title(_t="PDF on Utopia")
@@ -23,7 +23,6 @@ with a.html(lang="pl"):
                 a.img(src=path, klass='image')
         
         
-        a.script(src="jquery-3.6.0.min.js")
         a.script(src="show.js")
         
 
