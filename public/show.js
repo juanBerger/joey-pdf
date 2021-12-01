@@ -1,5 +1,5 @@
-let base = 'http://127.0.0.1:5500'
-//let base = 'https://pdf-on-utopia.netlify.app'
+//let base = 'http://127.0.0.1:5500'
+let base = 'https://pdf-on-utopia.netlify.app'
 let parent = document.getElementById("container");
 let images = {}
 
