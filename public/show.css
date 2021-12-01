@@ -20,11 +20,8 @@ body {
 
 
 .imageFocus {
-    
-    justify-content: center;
-    flex: 1 1;
+    width: 100%;
     max-width: 100%;
-    height: auto;
+    justify-content: center;
+    height: 100%;
 }
-
-
