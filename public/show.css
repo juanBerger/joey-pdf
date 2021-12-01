@@ -6,17 +6,24 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    row-gap: 0.5em;
+    column-gap: 0.5em;
     
 }
 
 .image {
-
-    width: calc(25% - 2em);
-    margin: 1em;
+    
 }
 
 
 .imageFocus {
-    width: 100%;
-
+    justify-content: center;
+    width: 100vw;
 }
+
+
+
+/*
+width: calc(25% - 2em);
+margin: 0.25em;
+*/

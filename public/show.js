@@ -1,7 +1,10 @@
-//let base = 'http://127.0.0.1:5500'
-let base = 'https://pdf-on-utopia.netlify.app'
+let base = 'http://127.0.0.1:5500'
+//let base = 'https://pdf-on-utopia.netlify.app'
 let parent = document.getElementById("container");
 let images = {}
+let scrollpos = 0
+
+window.onbeforeunload = () => window.scrollTo(0, 0)
 
 window.onload = () => {
 
@@ -13,8 +16,7 @@ window.onload = () => {
     img.addEventListener('click', () => {    
 
       if (parent.childElementCount > 1){
-        //const url = new URL(img.src)
-        //history.replaceState({}, '', url);
+        scrollpos = window.scrollY
         img.className = 'imageFocus'
         parent.innerHTML = ''
         window.scrollTo(0, 0)
@@ -23,15 +25,14 @@ window.onload = () => {
       } 
 
       else {
-        
-        //const url = new URL(base)
-        //history.replaceState({}, '', url);
+
         parent.innerHTML = ''
         for (const img in images){
           images[img].className = 'image'
           parent.appendChild(images[img])
   
         }
+        window.scrollTo(0, scrollpos);
       }
 
     })
