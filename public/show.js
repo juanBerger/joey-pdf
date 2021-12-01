@@ -1,10 +1,25 @@
-//let base = 'http://127.0.0.1:5500'
-let base = 'https://pdf-on-utopia.netlify.app'
+let base = 'http://127.0.0.1:5500'
+//let base = 'https://pdf-on-utopia.netlify.app'
 let parent = document.getElementById("container");
 let images = {}
 let scrollpos = 0
+let unloaded = false;
 
 window.onbeforeunload = () => window.scrollTo(0, 0)
+
+//For Mobile//
+window.addEventListener("visibilitychange", function(e)
+{
+    if (document.visibilityState == 'hidden')
+    {
+        if (unloaded)
+            return;
+        unloaded = true;
+        window.scrollTo(0, 0);
+    }
+});
+
+
 
 window.onload = () => {
 
