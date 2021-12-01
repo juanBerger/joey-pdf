@@ -13,8 +13,8 @@ window.onload = () => {
     img.addEventListener('click', () => {    
 
       if (parent.childElementCount > 1){
-        const url = new URL(img.src)
-        history.replaceState({}, '', url);
+        //const url = new URL(img.src)
+        //history.replaceState({}, '', url);
         img.className = 'imageFocus'
         parent.innerHTML = ''
         window.scrollTo(0, 0)
@@ -23,9 +23,9 @@ window.onload = () => {
       } 
 
       else {
-        //const url = new URL('/public/index.html', base)
-        const url = new URL(base)
-        history.replaceState({}, '', url);
+        
+        //const url = new URL(base)
+        //history.replaceState({}, '', url);
         parent.innerHTML = ''
         for (const img in images){
           images[img].className = 'image'
