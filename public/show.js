@@ -23,7 +23,8 @@ window.onload = () => {
       } 
 
       else {
-        const url = new URL('/public/index.html', base)
+        //const url = new URL('/public/index.html', base)
+        const url = new URL(base)
         history.replaceState({}, '', url);
         parent.innerHTML = ''
         for (const img in images){
