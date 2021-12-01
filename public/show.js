@@ -1,5 +1,5 @@
-//let base = 'http://127.0.0.1:5500'
-let base = 'https://pdf-on-utopia.netlify.app'
+let base = 'http://127.0.0.1:5500'
+//let base = 'https://pdf-on-utopia.netlify.app'
 let parent = document.getElementById("container");
 let images = {}
 
@@ -11,7 +11,8 @@ window.onload = () => {
     images[img.src] = img
 
     img.addEventListener('click', () => {    
-      if (window.location.pathname.includes('html')){
+
+      if (parent.childElementCount > 1){
         const url = new URL(img.src)
         history.replaceState({}, '', url);
         img.className = 'imageFocus'

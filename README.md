@@ -1,6 +1,5 @@
 # joey-pdf  
 
 
-Python script reads the template.html and appends image elements based on scanned folder, then writes result to ./public/index.html
-
-run pipenv uninstall yattag to remove the other html generator library
+In the absence of running gen.py inside of netlify (currently doesn't work), you can run it offline, then push the new repo.
+gen.py creates the html by adding as many image elements as there are images in ./public/img
