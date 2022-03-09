@@ -4,8 +4,12 @@ from airium import Airium
 images = []
 for root, dirs, files in os.walk('./public/img'):
     for file in files:
-        images = [image for image in files if image.endswith(('jpg', 'jpeg', 'png', 'svg', 'gif'))]
+        images = [int(os.path.splitext(image)[0]) for image in files if image.endswith(('jpg', 'jpeg', 'png', 'svg', 'gif'))]
 
+
+images.sort()
+for i,image in enumerate(images):
+    images[i] = str(image) + '.png'
 
 a = Airium()
 

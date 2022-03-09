@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(253, 0, 0, 0.342);
+    background-color: rgba(255, 255, 255, 0.342);
 }
 
 #container {
@@ -12,8 +12,8 @@ body {
 .image {
     
     /*flex: 1 1;*/
-    width: calc(25% - 4px);
-    margin: 1px;
+    width: calc(30% - 4px);
+    margin: 5px;
     height: auto;
     
 }
@@ -25,3 +25,8 @@ body {
     justify-content: center;
     height: 100%;
 }
+
+
+/*
+background-color: rgba(253, 0, 0, 0.342);
+*/
