@@ -14,7 +14,7 @@ resizePads = (aspectRatio) => {
   let targetImgHeight = (window.innerHeight * (1/6) - 12)  
   let targetImgWidth = (targetImgHeight / aspectRatio) + 10  
   let targetPadWidth = (window.innerWidth - (targetImgWidth * (numberInRow + 1))) / 2
-  //targetPadWidth -= 50
+  targetPadWidth < 0 ? targetPadWidth = 0 : targetPadWidth = targetPadWidth
   cssStyle.setProperty('--pad-col-width', String(targetPadWidth) + 'px')
 
 }
@@ -67,8 +67,8 @@ window.onload = () => {
         let idx = focusIdx - 1
         if (idx < 0){return}
         let prevImg = images[idx]
-        if ((focusIdx + 1) % numberInRow == 0){
-          lastScrollPos -= 700 //trial and error value, not that reliable
+        if ((focusIdx + 1) % (6 * numberInRow) == 0){
+          lastScrollPos -= window.innerHeight //trial and error value, not that reliable
         }
   
         renderImage(prevImg, parent)
@@ -78,8 +78,8 @@ window.onload = () => {
         let idx = focusIdx + 1
         if (idx > images.length - 1){return}
         let nextImg = images[idx]
-        if ((focusIdx + 1) % numberInRow == 0){
-          lastScrollPos += 600
+        if ((focusIdx + 1) % (6 * numberInRow) == 0){
+          lastScrollPos += window.innerHeight
         }
   
         renderImage(nextImg, parent)
