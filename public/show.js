@@ -1,18 +1,23 @@
+let aspectRatio = 1.302186878727634 // ~H/W the images are vary in size somewhat
+let numberInRow = 4 // *** get number in a row
+
 
 window.onbeforeunload = () => window.scrollTo(0, 0)
 
-//For Mobile//
-// window.addEventListener("visibilitychange", function(e)
-// {
-//     if (document.visibilityState == 'hidden')
-//     {
-//         if (unloaded)
-//             return;
-//         unloaded = true;
-//         window.scrollTo(0, 0);
-//     }
-// });
+window.onresize = () => {
+  resizePads(aspectRatio)
+}
 
+resizePads = (aspectRatio) => {
+
+  let cssStyle = document.styleSheets[0].cssRules[1].style
+  let targetImgHeight = (window.innerHeight * (1/6) - 12)  
+  let targetImgWidth = (targetImgHeight / aspectRatio) + 10  
+  let targetPadWidth = (window.innerWidth - (targetImgWidth * numberInRow)) / 2
+  console.log(targetPadWidth)
+  cssStyle.setProperty('--pad-col-width', String(targetPadWidth - 50) + 'px')
+
+}
 
 window.onload = () => {
 
@@ -21,10 +26,11 @@ window.onload = () => {
   let focusIdx = null
   let lastScrollPos = 0
   let focusState = 'grid'
-
-  
   let images = []
+  
+  resizePads(aspectRatio)
 
+  //Function Definitions
   renderImage = (img, parent) => {
 
     parent.innerHTML = ''
@@ -32,7 +38,6 @@ window.onload = () => {
     img.className = 'imageFocus'
     parent.appendChild(img)
     let thisNode = document.getElementsByClassName('imageFocus')[0] //handle for when there are arrow presses
-    //save the index of this image
     for (let i = 0; i < images.length; i++){
       if (images[i].src === thisNode.src){
         focusIdx = i
@@ -54,7 +59,37 @@ window.onload = () => {
     focusState = 'grid'
   }
 
+  advanceImage = (direction) => {
+
+    if (focusState === 'image'){
+        
+      if (direction === 'ArrowLeft'){
+        let idx = focusIdx - 1
+        if (idx < 0){return}
+        let prevImg = images[idx]
+        if ((focusIdx + 1) % numberInRow == 0){
+          lastScrollPos -= 700 //trial and error value, not that reliable
+        }
   
+        renderImage(prevImg, parent)
+      } 
+  
+      else if (direction === 'ArrowRight'){
+        let idx = focusIdx + 1
+        if (idx > images.length - 1){return}
+        let nextImg = images[idx]
+        if ((focusIdx + 1) % numberInRow == 0){
+          lastScrollPos += 600
+        }
+  
+        renderImage(nextImg, parent)
+      }
+  
+    }
+  
+  }
+
+  //Set up listeners
   for (let i=0; i < imageNodes.length; i++){
     let img = imageNodes[i]
     images.push(img)
@@ -67,50 +102,29 @@ window.onload = () => {
     })
   }
 
-  window.addEventListener('keydown', (event) => {
-    
-
-    //Around 130.png there is a break in the counting
-    if (focusState === 'image'){
-      
-      if (event.key === 'ArrowLeft'){
-        let idx = focusIdx - 1
-        if (idx < 0){return}
-        let prevImg = images[idx]
-        if ((focusIdx + 1) % 3 == 0){
-          lastScrollPos -= 700 //trial and error value, not that reliable
-        }
-
-        renderImage(prevImg, parent)
-      } 
-  
-      else if (event.key === 'ArrowRight'){
-        let idx = focusIdx + 1
-        if (idx > images.length - 1){return}
-        let nextImg = images[idx]
-        if ((focusIdx + 1) % 3 == 0){
-          lastScrollPos += 600
-        }
-
-        renderImage(nextImg, parent)
-      }
-
-    }
-    
+  document.addEventListener('swiped-left', (event) => {
+      advanceImage('ArrowLeft')
   })
 
+  document.addEventListener('swiped-right', (event) => {
+    advanceImage('ArrowRight')
+  })
+
+  window.addEventListener('keydown', (event) => {
+    advanceImage(event.key)    
+    
+  })
 }
 
 
-
-
-
-
-
-/*
-
- let splitURL = focusNode.src.split('/')
-        let filename = splitURL[splitURL.length - 1].split('.')[0]
-        let idx = Number(filename) - 2
-        console.log(idx)
-*/
+//For Mobile//
+// window.addEventListener("visibilitychange", function(e)
+// {
+//     if (document.visibilityState == 'hidden')
+//     {
+//         if (unloaded)
+//             return;
+//         unloaded = true;
+//         window.scrollTo(0, 0);
+//     }
+// });

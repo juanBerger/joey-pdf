@@ -2,19 +2,31 @@ body {
     background-color: rgba(255, 255, 255, 0.342);
 }
 
+:root {
+    --pad-col-width: 1fr;
+}
+
+
+#gridParent {
+
+    display: grid;
+    grid-template-columns: var(--pad-col-width) 1fr var(--pad-col-width);
+}
+
 #container {
+    grid-column-start: 2;
+    grid-column-end: 3;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
 }
 
-.image {
-    
-    /*flex: 1 1;*/
-    width: calc(30% - 4px);
+.image {    
+    width: auto;
     margin: 5px;
-    height: auto;
+    height: calc(100vh * (1/6) - 12px);
     
 }
 
@@ -26,7 +38,3 @@ body {
     height: 100%;
 }
 
-
-/*
-background-color: rgba(253, 0, 0, 0.342);
-*/
