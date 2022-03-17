@@ -13,10 +13,9 @@ resizePads = (aspectRatio) => {
   let cssStyle = document.styleSheets[0].cssRules[1].style
   let targetImgHeight = (window.innerHeight * (1/6) - 12)  
   let targetImgWidth = (targetImgHeight / aspectRatio) + 10  
-  let targetPadWidth = (window.innerWidth - (targetImgWidth * numberInRow)) / 2
-  targetPadWidth -= 50
-  console.log(targetPadWidth)
-  cssStyle.setProperty('--pad-col-width', String(targetPadWidth - 50) + 'px')
+  let targetPadWidth = (window.innerWidth - (targetImgWidth * (numberInRow + 1))) / 2
+  //targetPadWidth -= 50
+  cssStyle.setProperty('--pad-col-width', String(targetPadWidth) + 'px')
 
 }
 
