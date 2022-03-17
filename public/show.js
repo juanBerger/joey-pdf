@@ -1,8 +1,21 @@
 let aspectRatio = 1.302186878727634 // ~H/W the images are vary in size somewhat
 let numberInRow = 4 // *** get number in a row
-
+let unloaded = false
 
 window.onbeforeunload = () => window.scrollTo(0, 0)
+window.addEventListener("visibilitychange", function(e)
+{
+    if (document.visibilityState == 'hidden')
+    {
+        if (unloaded)
+            return;
+        unloaded = true;
+        window.scrollTo(0, 0);
+    }
+});
+
+
+
 
 window.onresize = () => {
   resizePads(aspectRatio)
@@ -117,14 +130,3 @@ window.onload = () => {
 }
 
 
-//For Mobile//
-// window.addEventListener("visibilitychange", function(e)
-// {
-//     if (document.visibilityState == 'hidden')
-//     {
-//         if (unloaded)
-//             return;
-//         unloaded = true;
-//         window.scrollTo(0, 0);
-//     }
-// });
